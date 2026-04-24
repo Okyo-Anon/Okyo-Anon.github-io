@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动应用UI设计 - 王启洋作品集</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #1a365d;
+            --primary-light: #2c5282;
+            --accent-green: #38b2ac;
+            --accent-green-light: #81e6d9;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --text-dark: #2d3748;
+            --text-gray: #718096;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.15);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --bg-light: #1a202c;
+            --bg-white: #2d3748;
+            --text-dark: #ffffff;
+            --text-gray: #a0aec0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--bg-light); transition: var(--transition); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: var(--shadow-sm); z-index: 1000; transition: var(--transition); }
+        [data-theme="dark"] nav { background: rgba(45,55,72,0.95); }
+        nav.scrolled { background: rgba(255,255,255,0.98); }
+        [data-theme="dark"] nav.scrolled { background: rgba(45,55,72,0.98); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-dark); text-decoration: none; }
+        [data-theme="dark"] .logo { color: #ffffff; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; transition: var(--transition); position: relative; }
+        [data-theme="dark"] .nav-links a { color: #ffffff; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-dark); }
+        [data-theme="dark"] .nav-links a:hover, [data-theme="dark"] .nav-links a.active { color: var(--accent-green); }
+        .theme-toggle { background: none; border: 2px solid var(--primary-dark); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--primary-dark); transition: var(--transition); }
+        [data-theme="dark"] .theme-toggle { border-color: #ffffff; color: #ffffff; }
+        .theme-toggle:hover { background: var(--primary-dark); color: white; }
+        [data-theme="dark"] .theme-toggle:hover { background: var(--accent-green); border-color: var(--accent-green); color: #ffffff; }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
+        [data-theme="dark"] .mobile-menu-btn { color: #ffffff; }
+
+        .breadcrumb { padding: 100px 20px 30px; background: var(--bg-white); }
+        [data-theme="dark"] .breadcrumb { background: var(--bg-light); }
+        .breadcrumb-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+        .breadcrumb a { color: var(--primary-dark); text-decoration: none; transition: var(--transition); }
+        [data-theme="dark"] .breadcrumb a { color: var(--accent-green); }
+        .breadcrumb a:hover { color: var(--accent-green); }
+        .breadcrumb span { color: var(--text-gray); }
+        .breadcrumb .current { color: var(--text-dark); }
+        [data-theme="dark"] .breadcrumb .current { color: #ffffff; }
+
+        .project-header { padding: 60px 20px; background: var(--bg-white); text-align: center; }
+        [data-theme="dark"] .project-header { background: var(--bg-light); }
+        .project-header h1 { font-size: 2.5rem; color: var(--primary-dark); margin-bottom: 20px; }
+        [data-theme="dark"] .project-header h1 { color: #ffffff; }
+        .project-header .subtitle { font-size: 1.2rem; color: var(--text-gray); max-width: 700px; margin: 0 auto; line-height: 1.8; }
+
+        .project-showcase { padding: 60px 20px; background: var(--bg-white); }
+        [data-theme="dark"] .project-showcase { background: var(--bg-light); }
+        .showcase-carousel { position: relative; max-width: 900px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-md); }
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 500px; background: linear-gradient(135deg, var(--primary-dark), var(--accent-green)); align-items: center; justify-content: center; flex-direction: column; color: white; opacity: 0; transition: opacity 0.8s ease-in-out; }
+        .carousel-slide.active { opacity: 1; position: relative; }
+        .carousel-slide i { font-size: 5rem; margin-bottom: 20px; }
+        .carousel-slide p { font-size: 1.5rem; font-weight: 500; }
+        .carousel-controls { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
+        .carousel-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--text-gray); cursor: pointer; transition: var(--transition); border: none; }
+        .carousel-dot.active { background: var(--accent-green); transform: scale(1.2); }
+
+        .project-details { padding: 80px 20px; background: var(--bg-white); }
+        [data-theme="dark"] .project-details { background: var(--bg-light); }
+        .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .detail-section { background: var(--bg-light); padding: 30px; border-radius: 15px; }
+        [data-theme="dark"] .detail-section { background: var(--bg-white); }
+        .detail-section h3 { font-size: 1.3rem; color: var(--primary-dark); margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        [data-theme="dark"] .detail-section h3 { color: #ffffff; }
+        .detail-section h3 i { color: var(--accent-green); }
+        .detail-section p { color: var(--text-gray); line-height: 1.8; }
+        [data-theme="dark"] .detail-section p { color: #a0aec0; }
+        .skills-used { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .skill-tag { padding: 8px 18px; background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light)); color: white; border-radius: 25px; font-size: 0.9rem; font-weight: 500; }
+
+        .project-link { padding: 60px 20px; background: var(--bg-white); text-align: center; }
+        [data-theme="dark"] .project-link { background: var(--bg-light); }
+        .project-link h3 { font-size: 1.8rem; color: var(--primary-dark); margin-bottom: 30px; }
+        [data-theme="dark"] .project-link h3 { color: #ffffff; }
+        .btn { display: inline-block; padding: 15px 40px; background: var(--primary-dark); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; }
+        .btn:hover { background: var(--primary-light); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+        footer { background: var(--primary-dark); color: white; padding: 30px 20px; text-align: center; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 20px; }
+        .footer-content p { margin: 0; }
+        .footer-social { display: flex; gap: 15px; }
+        .footer-social a { color: white; font-size: 1.3rem; transition: var(--transition); }
+        .footer-social a:hover { color: var(--accent-green-light); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; flex-direction: column; padding: 20px; gap: 15px; box-shadow: var(--shadow-md); }
+            [data-theme="dark"] .nav-links { background: #1a202c; }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .project-header h1 { font-size: 1.8rem; }
+            .carousel-slide { height: 300px; }
+            .carousel-slide i { font-size: 3rem; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+
+        /* 渐显动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s ease, transform 1.2s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">王启洋</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">首页</a></li>
+                <li><a href="index.html#about">关于</a></li>
+                <li><a href="index.html#projects">项目</a></li>
+                <li><a href="index.html#contact">联系</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="index.html">首页</a>
+            <span>/</span>
+            <a href="index.html#projects">项目</a>
+            <span>/</span>
+            <span class="current">移动应用UI设计</span>
+        </div>
+    </div>
+
+    <section class="project-header fade-in">
+        <div class="container">
+            <h1>移动应用UI设计</h1>
+            <p class="subtitle">设计一款健康管理类App的完整UI界面，包含用户调研、交互设计和视觉设计，打造流畅的用户体验。</p>
+        </div>
+    </section>
+
+    <section class="project-showcase fade-in">
+        <div class="container">
+            <div class="showcase-carousel">
+                <div class="carousel-slide active">
+                    <i class="fas fa-mobile-alt"></i>
+                    <p>应用首页</p>
+                </div>
+                <div class="carousel-slide">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>健康数据</p>
+                </div>
+                <div class="carousel-slide">
+                    <i class="fas fa-running"></i>
+                    <p>运动记录</p>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-dot active" data-slide="0"></button>
+                <button class="carousel-dot" data-slide="1"></button>
+                <button class="carousel-dot" data-slide="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details fade-in">
+        <div class="container">
+            <div class="details-grid">
+                <div class="detail-section">
+                    <h3><i class="fas fa-bullseye"></i> 项目背景</h3>
+                    <p>一款专注于个人健康管理的移动应用，旨在帮助用户追踪日常健康数据，养成健康生活习惯。</p>
+                </div>
+                <div class="detail-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> 主要挑战</h3>
+                    <p>如何在复杂的健康数据展示中保持界面简洁直观，同时确保用户能够快速获取关键信息。</p>
+                </div>
+                <div class="detail-section">
+                    <h3><i class="fas fa-lightbulb"></i> 解决方案</h3>
+                    <p>采用卡片式布局和清晰的视觉层级，结合直观的图表展示，让用户轻松理解健康数据。</p>
+                </div>
+                <div class="detail-section">
+                    <h3><i class="fas fa-tools"></i> 技能 / 工具</h3>
+                    <div class="skills-used">
+                        <span class="skill-tag">UI设计</span>
+                        <span class="skill-tag">UX设计</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Adobe XD</span>
+                        <span class="skill-tag">原型设计</span>
+                        <span class="skill-tag">用户调研</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-link fade-in">
+        <div class="container">
+            <h3>查看完整项目</h3>
+            <a href="#" class="btn">查看详情</a>
+        </div>
+    </section>
+
+    <footer class="fade-in">
+        <div class="footer-content">
+            <p>&copy; 2026 王启洋. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-qq"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        mobileMenuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) { document.documentElement.setAttribute('data-theme', savedTheme); updateThemeIcon(savedTheme); }
+        themeToggle.addEventListener('click', () => {
+            const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        function updateThemeIcon(theme) { themeIcon.classList.toggle('fa-sun', theme === 'dark'); themeIcon.classList.toggle('fa-moon', theme !== 'dark'); }
+
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => showSlide(index));
+        });
+
+        setInterval(() => {
+            const nextSlide = (currentSlide + 1) % slides.length;
+            showSlide(nextSlide);
+        }, 5000);
+
+        // 渐显动画
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
