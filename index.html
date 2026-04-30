@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王启洋 - 设计师</title>
+    <title>你好，我是王启洋，正在研究前端+视觉设计</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-dark: #1a365d;
             --primary-light: #2c5282;
-            --accent-green: #38b2ac;
-            --accent-green-light: #81e6d9;
+            --accent-green: #1C9767;
+            --accent-green-light: #7dd3b8;
             --bg-light: #f7fafc;
             --bg-white: #ffffff;
             --text-dark: #2d3748;
@@ -270,6 +270,50 @@
             cursor: pointer;
         }
 
+        .wechat-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wechat-modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .wechat-modal-content img {
+            max-width: 300px;
+            height: auto;
+            display: block;
+        }
+
+        .wechat-modal-close {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            background: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -331,10 +375,25 @@
             margin-bottom: 10px;
         }
 
+        .hero-content h1 .highlight {
+            background: #1a365d;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
         .hero-content .subtitle {
             font-size: 1.5rem;
             color: var(--text-gray);
             margin-bottom: 15px;
+        }
+
+        .hero-content .subtitle .highlight {
+            background: #1C9767;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 5px;
         }
 
         [data-theme="dark"] .hero-content h1 {
@@ -363,6 +422,7 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            margin-top: 20px;
         }
 
         .btn:hover {
@@ -374,11 +434,11 @@
         /* 关于我 */
         #about {
             padding: 100px 20px;
-            background: var(--bg-white);
+            background: var(--bg-light);
         }
 
         [data-theme="dark"] #about {
-            background: var(--bg-light);
+            background: var(--bg-white);
         }
 
         .section-title {
@@ -434,12 +494,19 @@
 
         .skill-tag {
             padding: 8px 20px;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light));
             color: white;
             border-radius: 25px;
             font-weight: 500;
             font-size: 0.95rem;
         }
+
+        .skill-tag.ui { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .skill-tag.brand { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .skill-tag.graphic { background: linear-gradient(135deg, #e67e22, #d35400); }
+        .skill-tag.vibe { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .skill-tag.blender { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .skill-tag.photoshop { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .skill-tag.illustrator { background: linear-gradient(135deg, #f39c12, #f1c40f); }
 
         /* 项目展示 */
         #projects {
@@ -483,6 +550,13 @@
             justify-content: center;
             font-size: 3rem;
             color: white;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .project-info {
@@ -833,9 +907,8 @@
             <div class="avatar">
                 <img src="res/selfportrait.jpg" alt="王启洋">
             </div>
-            <h1>王启洋</h1>
-            <p class="subtitle">设计师</p>
-            <p class="tagline">不觉得很雷霆吗</p>
+            <h1>你好，我是<span class="highlight">王启洋</span></h1>
+            <p class="subtitle">正在研究<span class="highlight">前端+视觉设计</span></p>
             <a href="#projects" class="btn">查看作品</a>
         </div>
     </section>
@@ -848,7 +921,7 @@
                 <div class="about-text">
                     <p>毕业于广东外语外贸大学日语专业 ，主修方向日语＋法学。</p>
                     <p>某供应链公司 · 运营（2024-2025）：从0到1搭建阿里巴巴国际站店铺，积累了一整套电商网站工程经验。</p>
-                    <p>我是一个技能复合型创作者<br>网站搭建 · 翻译 · 游戏本地化 · 视频剪辑 · 以及更多。</p>
+                    <p>我是一个技能复合型创作者<br>网站搭建 · 翻译 · 建模 · 视频剪辑 · 以及更多。</p>
                     <p>我不喜欢"只会一种"的局限性。你需要一个页面、一段译文、一个游戏的本土化版本、一条短视频——我都可以独立完成。不是"什么都会一点"，而是"能用多种技能把一个想法变成可交付的作品"。</p>
                 </div>
                 <div class="about-right">
@@ -856,13 +929,13 @@
                         <img src="res/selfportrait.jpg" alt="个人照片">
                     </div>
                     <div class="skills">
-                    <span class="skill-tag">UI设计</span>
-                    <span class="skill-tag">品牌设计</span>
-                    <span class="skill-tag">平面设计</span>
-                    <span class="skill-tag">Vibe Coding</span>
-                    <span class="skill-tag">Blender</span>
-                    <span class="skill-tag">Photoshop</span>
-                    <span class="skill-tag">Illustrator</span>
+                    <span class="skill-tag ui">UI设计</span>
+                    <span class="skill-tag brand">品牌设计</span>
+                    <span class="skill-tag graphic">平面设计</span>
+                    <span class="skill-tag vibe">Vibe Coding</span>
+                    <span class="skill-tag blender">Blender</span>
+                    <span class="skill-tag photoshop">Photoshop</span>
+                    <span class="skill-tag illustrator">Illustrator</span>
                 </div>
                 </div>
             </div>
@@ -877,11 +950,11 @@
                 <!-- 项目1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-laptop-code"></i>
+                        <img src="res/webdesign.png" alt="网站设计">
                     </div>
                     <div class="project-info">
                         <h3>网站设计</h3>
-                        <p>为一家设计工作室设计现代化、响应式的官方网站，提升用户体验。</p>
+                        <p>为企业设计现代化、响应式的官方网站，提升用户体验。</p>
                         <a href="project-web.html" class="btn-outline">了解详情</a>
                     </div>
                 </div>
@@ -926,10 +999,8 @@
                         <a href="mailto:2414539314@qq.com">2414539314@qq.com</a>
                     </div>
                     <div class="social-links">
-                        <a href="#" aria-label="微信"><i class="fab fa-weixin"></i></a>
-                        <a href="#" aria-label="QQ"><i class="fab fa-qq"></i></a>
-                        <a href="#" aria-label="微博"><i class="fab fa-weibo"></i></a>
-                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" id="wechatBtn" aria-label="微信"><i class="fab fa-weixin"></i></a>
+                        <a href="https://github.com/Okyo-Anon" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <form class="contact-form" id="contactForm">
@@ -956,10 +1027,8 @@
         <div class="footer-content">
             <p>&copy; 2026 王启洋. All rights reserved.</p>
             <div class="footer-social">
-                <a href="#" aria-label="微信"><i class="fab fa-weixin"></i></a>
-                <a href="#" aria-label="QQ"><i class="fab fa-qq"></i></a>
-                <a href="#" aria-label="微博"><i class="fab fa-weibo"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" id="wechatBtnFooter" aria-label="微信"><i class="fab fa-weixin"></i></a>
+                <a href="https://github.com/Okyo-Anon" aria-label="GitHub" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </footer>
@@ -1098,8 +1167,39 @@
             backToTopBtn.addEventListener('click', () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
+
+            const wechatModal = document.getElementById('wechatModal');
+            const wechatModalClose = document.querySelector('.wechat-modal-close');
+            const wechatBtn = document.getElementById('wechatBtn');
+            const wechatBtnFooter = document.getElementById('wechatBtnFooter');
+
+            wechatBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                wechatModal.style.display = 'flex';
+            });
+
+            wechatBtnFooter.addEventListener('click', (e) => {
+                e.preventDefault();
+                wechatModal.style.display = 'flex';
+            });
+
+            wechatModalClose.addEventListener('click', () => {
+                wechatModal.style.display = 'none';
+            });
+
+            wechatModal.addEventListener('click', (e) => {
+                if (e.target === wechatModal) {
+                    wechatModal.style.display = 'none';
+                }
+            });
         });
     </script>
+    <div id="wechatModal" class="wechat-modal">
+        <div class="wechat-modal-content">
+            <span class="wechat-modal-close">&times;</span>
+            <img src="res/wechat.jpg" alt="微信二维码">
+        </div>
+    </div>
     <button id="backToTop" class="back-to-top" aria-label="回到顶部">
         <i class="fas fa-arrow-up"></i>
     </button>
