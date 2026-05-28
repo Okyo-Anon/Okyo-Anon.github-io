@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-dark: #1a365d;
-            --primary-light: #2c5282;
-            --accent-green: #1C9767;
-            --accent-green-light: #7dd3b8;
+            --primary-dark: #0071e3;
+            --primary-light: #2997ff;
+            --accent-green: #30D158;
+            --accent-green-light: #6ee884;
             --bg-light: #f7fafc;
             --bg-white: #ffffff;
             --text-dark: #2d3748;
@@ -90,7 +90,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-dark);
+            color: #000000;
             text-decoration: none;
         }
 
@@ -126,7 +126,7 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--primary-dark);
+            color: #000000;
         }
 
         [data-theme="dark"] .nav-links a {
@@ -167,7 +167,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-dark);
+            color: #000000;
             transition: var(--transition);
         }
 
@@ -196,7 +196,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-dark);
+            color: #000000;
             transition: var(--transition);
             font-weight: 600;
             font-size: 0.9rem;
@@ -245,7 +245,7 @@
 
         .lang-dropdown a:hover {
             background: var(--bg-light);
-            color: var(--primary-dark);
+            color: #000000;
         }
 
         .lang-dropdown a.active {
@@ -259,6 +259,10 @@
 
         [data-theme="dark"] .lang-dropdown a {
             color: var(--text-dark);
+        }
+
+        [data-theme="dark"] .lang-dropdown a:hover {
+            color: var(--accent-green);
         }
 
         .mobile-menu-btn {
@@ -361,7 +365,7 @@
             max-width: 800px;
         }
 
-        .avatar {
+        .avatar.apple-reveal-container {
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -369,7 +373,7 @@
             box-shadow: var(--shadow-md);
         }
 
-        .avatar img {
+        .avatar.apple-reveal-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -378,12 +382,12 @@
 
         .hero-content h1 {
             font-size: 3rem;
-            color: var(--primary-dark);
+            color: #000000;
             margin-bottom: 10px;
         }
 
         .hero-content h1 .highlight {
-            background: #1a365d;
+            background: #0071e3;
             color: white;
             padding: 2px 8px;
             border-radius: 4px;
@@ -396,7 +400,7 @@
         }
 
         .hero-content .subtitle .highlight {
-            background: #1C9767;
+            background: #30D158;
             color: white;
             padding: 2px 8px;
             border-radius: 4px;
@@ -419,7 +423,10 @@
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             padding: 15px 40px;
             background: var(--primary-dark);
             color: white;
@@ -440,7 +447,6 @@
 
         /* 关于我 */
         #about {
-            padding: 100px 20px;
             background: var(--bg-light);
         }
 
@@ -451,7 +457,7 @@
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            color: var(--primary-dark);
+            color: #000000;
             margin-bottom: 50px;
         }
 
@@ -459,44 +465,93 @@
             color: #ffffff;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+        .about-intro {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
         }
 
-        .about-text p {
-            font-size: 1.1rem;
+        .about-heading {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
             color: var(--text-dark);
-            margin-bottom: 20px;
-            line-height: 1.8;
+            line-height: 1.1;
+            margin-bottom: 2rem;
         }
 
-        .about-right {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+        .about-intro .skills {
+            margin-bottom: 2.5rem;
         }
 
-        .about-photo {
+        .about-subtitle {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .about-intro {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .about-photo.apple-reveal-container {
             width: 50%;
             margin: 0 auto;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
+            aspect-ratio: 3 / 4;
         }
 
-        .about-photo img {
+        .about-photo.apple-reveal-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                90deg,
+                #e0e0e0 25%,
+                #f0f0f0 50%,
+                #e0e0e0 75%
+            );
+            background-size: 200% 100%;
+            animation: skeleton-shimmer 1.5s infinite;
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .about-photo.apple-reveal-container::before {
+            background: linear-gradient(
+                90deg,
+                #2d3748 25%,
+                #3d4a5c 50%,
+                #2d3748 75%
+            );
+            background-size: 200% 100%;
+            animation: skeleton-shimmer-dark 1.5s infinite;
+        }
+
+        .about-photo.apple-reveal-container:has(.revealed)::before {
+            display: none;
+        }
+
+        .about-photo.apple-reveal-container img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
+            position: relative;
+            z-index: 2;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+            justify-content: center;
         }
 
         .skill-tag {
@@ -572,7 +627,7 @@
 
         .project-info h3 {
             font-size: 1.3rem;
-            color: var(--primary-dark);
+            color: #000000;
             margin-bottom: 10px;
         }
 
@@ -587,10 +642,13 @@
         }
 
         .btn-outline {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             padding: 10px 25px;
             border: 2px solid var(--primary-dark);
-            color: var(--primary-dark);
+            color: #000000;
             text-decoration: none;
             border-radius: 25px;
             font-weight: 600;
@@ -610,8 +668,8 @@
         }
 
         [data-theme="dark"] .btn-outline:hover {
-            background: var(--accent-green);
-            border-color: var(--accent-green);
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
             color: #ffffff;
         }
 
@@ -633,7 +691,7 @@
 
         .contact-info h3 {
             font-size: 1.8rem;
-            color: var(--primary-dark);
+            color: #000000;
             margin-bottom: 20px;
         }
 
@@ -660,7 +718,7 @@
         }
 
         .contact-email a {
-            color: var(--primary-dark);
+            color: #000000;
             text-decoration: none;
         }
 
@@ -854,7 +912,7 @@
 
         /* 导航激活状态 */
         .nav-links a.active {
-            color: var(--primary-dark);
+            color: #000000;
             font-weight: 600;
         }
 
@@ -874,6 +932,74 @@
         .fade-in-delay-2 { transition-delay: 0.2s; }
         .fade-in-delay-3 { transition-delay: 0.3s; }
         .fade-in-delay-4 { transition-delay: 0.4s; }
+
+        /* Apple 风格图片入场动画 */
+        .apple-reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.96);
+            filter: blur(6px);
+            transition: opacity 0.9s cubic-bezier(0.25, 0.1, 0.15, 1.2),
+                        transform 0.9s cubic-bezier(0.25, 0.1, 0.15, 1.2),
+                        filter 0.9s cubic-bezier(0.25, 0.1, 0.15, 1.2);
+            will-change: opacity, transform, filter;
+        }
+
+        .apple-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        /* 图片悬停效果 */
+        .apple-reveal-container {
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .apple-reveal-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        /* 骨架屏 */
+        .skeleton {
+            background: linear-gradient(
+                90deg,
+                #e0e0e0 25%,
+                #f0f0f0 50%,
+                #e0e0e0 75%
+            );
+            background-size: 200% 100%;
+            animation: skeleton-shimmer 1.5s infinite;
+        }
+
+        @keyframes skeleton-shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        [data-theme="dark"] .skeleton {
+            background: linear-gradient(
+                90deg,
+                #2d3748 25%,
+                #3d4a5c 50%,
+                #2d3748 75%
+            );
+            background-size: 200% 100%;
+            animation: skeleton-shimmer-dark 1.5s infinite;
+        }
+
+        @keyframes skeleton-shimmer-dark {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* 响应式图片比例 */
+        @media (max-width: 768px) {
+            .project-image {
+                aspect-ratio: 4 / 3;
+            }
+        }
     </style>
 </head>
 <body>
@@ -910,41 +1036,36 @@
     <!-- Hero区 -->
     <section id="home" class="fade-in">
         <div class="hero-content">
-            <div class="avatar">
-                <img src="res/selfportrait.jpg" alt="王启洋">
+            <div class="avatar apple-reveal-container avatar-reveal">
+                <img class="apple-reveal skeleton" data-src="res/selfportrait.jpg" alt="王启洋">
             </div>
             <h1>你好，我是<span class="highlight">王启洋</span></h1>
             <p class="subtitle">正在研究 <span class="highlight">前端+视觉设计</span></p>
-            <a href="#projects" class="btn">查看作品</a>
+            <a href="#projects" class="btn">查看作品 <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
     <!-- 关于我 -->
     <section id="about" class="fade-in">
-        <div class="container">
-            <h2 class="section-title">关于我</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>毕业于广东外语外贸大学日语专业 ，主修方向日语＋法学。</p>
-                    <p>某供应链公司 · 运营（2024-2025）：从0到1搭建阿里巴巴国际站店铺，积累了一整套电商网站工程经验。</p>
-                    <p>我是一个技能复合型创作者<br>网站搭建 · 翻译 · 建模 · 视频剪辑 · 以及更多。</p>
-                    <p>我不喜欢"只会一种"的局限性。你需要一个页面、一段译文、一个游戏的本土化版本、一条短视频——我都可以独立完成。不是"什么都会一点"，而是"能用多种技能把一个想法变成可交付的作品"。</p>
-                </div>
-                <div class="about-right">
-                    <div class="about-photo">
-                        <img src="res/selfportrait.jpg" alt="个人照片">
-                    </div>
-                    <div class="skills">
-                    <span class="skill-tag ui">UI设计</span>
-                    <span class="skill-tag brand">品牌设计</span>
-                    <span class="skill-tag graphic">平面设计</span>
-                    <span class="skill-tag vibe">Vibe Coding</span>
-                    <span class="skill-tag blender">Blender</span>
-                    <span class="skill-tag photoshop">Photoshop</span>
-                    <span class="skill-tag illustrator">Illustrator</span>
-                </div>
-                </div>
+        <div class="about-intro">
+            <h2 class="about-heading">
+                日语 + 法学出身。<br>
+                设计、宣传、运营。<br>
+                也是创作者。
+            </h2>
+            <div class="skills">
+                <span class="skill-tag ui">UI设计</span>
+                <span class="skill-tag brand">品牌设计</span>
+                <span class="skill-tag graphic">平面设计</span>
+                <span class="skill-tag vibe">Vibe Coding</span>
+                <span class="skill-tag blender">Blender</span>
+                <span class="skill-tag photoshop">Photoshop</span>
+                <span class="skill-tag illustrator">Illustrator</span>
             </div>
+            <p class="about-subtitle">
+                毕业于广东外语外贸大学日语专业，主修日语+法学。曾在一家供应链公司从0到1搭建阿里巴巴国际站，积累完整的电商工程经验。<br><br>
+                如今，我用网站搭建、翻译、3D建模、视频剪辑等复合技能，把想法变成可交付的作品——而不是只做一个标签。
+            </p>
         </div>
     </section>
 
@@ -961,7 +1082,7 @@
                     <div class="project-info">
                         <h3>网站设计</h3>
                         <p>为企业设计现代化、响应式的官方网站，提升用户体验。</p>
-                        <a href="project-web.html" class="btn-outline">了解详情</a>
+                        <a href="project-web.html" class="btn-outline">了解详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -972,8 +1093,8 @@
                     </div>
                     <div class="project-info">
                         <h3>品牌视觉设计</h3>
-                        <p>为一家初创公司打造完整的品牌视觉系统，包括Logo、VI设计和品牌手册。</p>
-                        <a href="project-brand.html" class="btn-outline">了解详情</a>
+                        <p>为企业打造完整的品牌视觉系统，包括Logo、VI设计和品牌手册。</p>
+                        <a href="project-brand.html" class="btn-outline">了解详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
 
@@ -984,8 +1105,8 @@
                     </div>
                     <div class="project-info">
                         <h3>移动应用UI设计</h3>
-                        <p>设计一款健康管理类App的完整UI界面，包含用户调研、交互设计和视觉设计。</p>
-                        <a href="project-app.html" class="btn-outline">了解详情</a>
+                        <p>设计一款学习类App的完整UI界面，包含用户调研、交互设计和视觉设计。</p>
+                        <a href="project-app.html" class="btn-outline">了解详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -1022,7 +1143,7 @@
                         <label for="message">留言</label>
                         <textarea id="message" name="message" placeholder="请输入你的留言" required></textarea>
                     </div>
-                    <button type="submit" class="btn">发送消息</button>
+                    <button type="submit" class="btn">发送消息 <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
@@ -1213,6 +1334,43 @@
                     wechatModal.style.display = 'none';
                 }
             });
+        });
+
+        // Apple 风格图片入场动画 + 懒加载
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const container = img.closest('.apple-reveal-container');
+
+                    // 懒加载：从 data-src 加载图片
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.onload = () => {
+                            img.classList.remove('skeleton');
+                        };
+                        img.onerror = () => {
+                            img.classList.remove('skeleton');
+                        };
+                    }
+
+                    // 触发入场动画
+                    requestAnimationFrame(() => {
+                        img.classList.add('revealed');
+                    });
+
+                    // 动画只触发一次
+                    revealObserver.unobserve(img);
+                }
+            });
+        }, {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // 观察所有带 apple-reveal 类的图片
+        document.querySelectorAll('.apple-reveal').forEach(img => {
+            revealObserver.observe(img);
         });
     </script>
     <div id="wechatModal" class="wechat-modal">
