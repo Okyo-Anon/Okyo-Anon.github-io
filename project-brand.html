@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>品牌视觉设计 - 王启洋作品集</title>
+    <title>技术文档写作 - 王启洋作品集</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -72,10 +72,12 @@
         .project-showcase { padding: 60px 20px; background: var(--bg-white); }
         [data-theme="dark"] .project-showcase { background: var(--bg-light); }
         .showcase-carousel { position: relative; max-width: 900px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-md); }
-        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 500px; background: linear-gradient(135deg, var(--primary-dark), var(--accent-green)); align-items: center; justify-content: center; flex-direction: column; color: white; opacity: 0; transition: opacity 0.8s ease-in-out; }
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 500px; background: linear-gradient(135deg, var(--primary-dark), var(--accent-green)); display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; opacity: 0; transition: opacity 0.8s ease-in-out; }
         .carousel-slide.active { opacity: 1; position: relative; }
         .carousel-slide i { font-size: 5rem; margin-bottom: 20px; }
         .carousel-slide p { font-size: 1.5rem; font-weight: 500; }
+        .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .slide-caption { position: absolute; bottom: 20px; left: 20px; background: rgba(0, 0, 0, 0.7); color: white; padding: 10px 20px; border-radius: 8px; font-size: 1.1rem; font-weight: 500; }
         .carousel-controls { display: flex; justify-content: center; gap: 15px; margin-top: 25px; }
         .carousel-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--text-gray); cursor: pointer; transition: var(--transition); border: none; }
         .carousel-dot.active { background: var(--accent-green); transform: scale(1.2); }
@@ -92,6 +94,13 @@
         [data-theme="dark"] .detail-section p { color: #a0aec0; }
         .skills-used { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
         .skill-tag { padding: 8px 18px; background: linear-gradient(135deg, var(--accent-green), var(--accent-green-light)); color: white; border-radius: 25px; font-size: 0.9rem; font-weight: 500; }
+
+        .carousel-slide .placeholder-text {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: white;
+        }
 
         .project-link { padding: 60px 20px; background: var(--bg-white); text-align: center; }
         [data-theme="dark"] .project-link { background: var(--bg-light); }
@@ -152,14 +161,14 @@
             <span>/</span>
             <a href="index.html#projects">项目</a>
             <span>/</span>
-            <span class="current">品牌视觉设计</span>
+            <span class="current">技术文档写作</span>
         </div>
     </div>
 
     <section class="project-header fade-in">
         <div class="container">
-            <h1>品牌视觉设计</h1>
-            <p class="subtitle">为一家初创公司打造完整的品牌视觉系统，包括Logo、VI设计和品牌手册，建立统一的品牌识别。</p>
+            <h1>技术文档写作</h1>
+            <p class="subtitle">为一家制造业企业搭建完整的技术文档体系，包括用户手册、API文档和文档发布流程，建立统一的文档规范。</p>
         </div>
     </section>
 
@@ -167,16 +176,14 @@
         <div class="container">
             <div class="showcase-carousel">
                 <div class="carousel-slide active">
-                    <i class="fas fa-palette"></i>
-                    <p>Logo设计</p>
+                    <img src="res/sampleindex.png" alt="工业产品用户手册">
+                    <span class="slide-caption">工业产品用户手册</span>
                 </div>
-                <div class="carousel-slide">
-                    <i class="fas fa-shapes"></i>
-                    <p>VI系统</p>
+                <div class="carousel-slide placeholder">
+                    <span class="placeholder-text">敬请期待</span>
                 </div>
-                <div class="carousel-slide">
-                    <i class="fas fa-book"></i>
-                    <p>品牌手册</p>
+                <div class="carousel-slide placeholder">
+                    <span class="placeholder-text">敬请期待</span>
                 </div>
             </div>
             <div class="carousel-controls">
@@ -192,25 +199,25 @@
             <div class="details-grid">
                 <div class="detail-section">
                     <h3><i class="fas fa-bullseye"></i> 项目背景</h3>
-                    <p>一家专注于可持续发展的初创公司，需要建立完整的品牌形象来传达其品牌理念，吸引目标客户群体。</p>
+                    <p>一家专注于工业设备的制造业企业，需要建立完整的产品文档体系来支撑国内外客户使用，并降低售后支持成本。</p>
                 </div>
                 <div class="detail-section">
                     <h3><i class="fas fa-exclamation-triangle"></i> 主要挑战</h3>
-                    <p>在竞争激烈的市场中，如何让品牌脱颖而出，同时保持专业性和可信度，是本次设计的核心挑战。</p>
+                    <p>在产品快速迭代、多语言发布和研发协作并行的环境下，如何保证文档与产品版本同步，同时让内容通俗易懂，是本次文档开发的核心挑战。</p>
                 </div>
                 <div class="detail-section">
                     <h3><i class="fas fa-lightbulb"></i> 解决方案</h3>
-                    <p>通过深入了解品牌核心价值，结合现代简约设计风格，创造出既现代又具有温度的品牌视觉系统。</p>
+                    <p>通过深入理解产品架构和用户任务路径，结合结构化写作与版本控制机制，搭建起既准确又易用的技术文档体系，并嵌入研发流程实现持续更新。</p>
                 </div>
                 <div class="detail-section">
                     <h3><i class="fas fa-tools"></i> 技能 / 工具</h3>
                     <div class="skills-used">
-                        <span class="skill-tag">品牌设计</span>
-                        <span class="skill-tag">Logo设计</span>
-                        <span class="skill-tag">Illustrator</span>
-                        <span class="skill-tag">Photoshop</span>
-                        <span class="skill-tag">InDesign</span>
-                        <span class="skill-tag">品牌策略</span>
+                        <span class="skill-tag">技术写作</span>
+                        <span class="skill-tag">API文档</span>
+                        <span class="skill-tag">版本控制</span>
+                        <span class="skill-tag">结构化写作</span>
+                        <span class="skill-tag">用户手册</span>
+                        <span class="skill-tag">文档规范</span>
                     </div>
                 </div>
             </div>
@@ -220,7 +227,7 @@
     <section class="project-link fade-in">
         <div class="container">
             <h3>查看完整项目</h3>
-            <a href="#" class="btn">查看详情</a>
+            <a href="sampleindex/_build/html/index.html" class="btn">查看详情</a>
         </div>
     </section>
 

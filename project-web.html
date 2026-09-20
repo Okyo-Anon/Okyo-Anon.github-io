@@ -265,6 +265,7 @@
             width: 100%;
             height: 500px;
             background: linear-gradient(135deg, var(--primary-dark), var(--accent-green));
+            display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
@@ -304,6 +305,13 @@
         .carousel-slide p {
             font-size: 1.5rem;
             font-weight: 500;
+        }
+
+        .carousel-slide .placeholder-text {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            color: white;
         }
 
         .carousel-controls {
@@ -572,11 +580,11 @@
                     <img src="res/elianpage.jpg" alt="首页主视觉">
                     <span class="slide-caption">物流公司网站</span>
                 </div>
-                <div class="carousel-slide">
-                    <i class="fas fa-images"></i>
+                <div class="carousel-slide placeholder">
+                    <span class="placeholder-text">敬请期待</span>
                 </div>
-                <div class="carousel-slide">
-                    <i class="fas fa-envelope"></i>
+                <div class="carousel-slide placeholder">
+                    <span class="placeholder-text">敬请期待</span>
                 </div>
             </div>
             <div class="carousel-controls">
