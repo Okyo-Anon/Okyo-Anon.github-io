@@ -456,44 +456,42 @@
             color: #ffffff;
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .about-right {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .about-photo {
-            width: 50%;
+        .about-intro {
+            max-width: 900px;
             margin: 0 auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
+            padding: 4rem 2rem;
+            text-align: center;
         }
 
-        .about-photo img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .about-heading {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-dark);
+            line-height: 1.1;
+            margin-bottom: 2rem;
         }
 
-        .skills {
+        .about-intro .skills {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
+            margin-bottom: 2.5rem;
+            justify-content: center;
+        }
+
+        .about-subtitle {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .about-intro {
+                padding: 3rem 1.5rem;
+            }
         }
 
         .skill-tag {
@@ -511,6 +509,9 @@
         .skill-tag.blender { background: linear-gradient(135deg, #e74c3c, #c0392b); }
         .skill-tag.photoshop { background: linear-gradient(135deg, #3498db, #2980b9); }
         .skill-tag.illustrator { background: linear-gradient(135deg, #f39c12, #f1c40f); }
+        .skill-tag.writing { background: linear-gradient(135deg, #6c5ce7, #5a4bd1); }
+        .skill-tag.api { background: linear-gradient(135deg, #00b4d8, #0096c7); }
+        .skill-tag.git { background: linear-gradient(135deg, #607d8b, #455a64); }
 
         #projects {
             padding: 100px 20px;
@@ -903,36 +904,37 @@
                 <img src="res/selfportrait.jpg" alt="Wang Qiyang">
             </div>
             <h1>Hello, I'm <span class="highlight">Wang Qiyang</span></h1>
-            <p class="subtitle">Focusing on <span class="highlight">Frontend + Visual Design</span></p>
-            <a href="#projects" class="btn">View Projects</a>
+            <p class="subtitle">Focusing on <span class="highlight">Frontend + Technical Documentation</span></p>
+            <a href="#projects" class="btn">View Projects <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
     <section id="about" class="fade-in">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Graduated from Guangdong University of Foreign Studies, Japanese Language Major, with a focus on Japanese + Law.</p>
-                    <p>Supply Chain Company · Operations (2024-2025): Built an Alibaba International Station store from scratch, gaining a complete set of e-commerce website engineering experience.</p>
-                    <p>Hi, I'm a multi-skilled creator<br>Web Development · Translation · 3D Modeling · Video Editing · And More.</p>
-                    <p>I don't like the limitation of "only knowing one thing." You need a webpage, a translated document, a localized version of a game, a short video - I can handle all of these independently. It's not "knowing a bit of everything," but "using multiple skills to turn an idea into a deliverable product."</p>
-                </div>
-                <div class="about-right">
-                    <div class="about-photo">
-                        <img src="res/selfportrait.jpg" alt="Personal Photo">
-                    </div>
-                    <div class="skills">
-                    <span class="skill-tag ui">UI Design</span>
-                    <span class="skill-tag brand">Brand Design</span>
-                    <span class="skill-tag graphic">Graphic Design</span>
-                    <span class="skill-tag vibe">Vibe Coding</span>
-                    <span class="skill-tag blender">Blender</span>
-                    <span class="skill-tag photoshop">Photoshop</span>
-                    <span class="skill-tag illustrator">Illustrator</span>
-                </div>
-                </div>
+        <div class="about-intro">
+            <h2 class="about-heading">
+                Background in Japanese + Law.<br>
+                Frontend, documentation, design.<br>
+                A creator, too.
+            </h2>
+            <div class="skills">
+                <span class="skill-tag ui">UI Design</span>
+                <span class="skill-tag brand">Brand Design</span>
+                <span class="skill-tag graphic">Graphic Design</span>
+                <span class="skill-tag vibe">Vibe Coding</span>
+                <span class="skill-tag blender">Blender</span>
+                <span class="skill-tag photoshop">Photoshop</span>
+                <span class="skill-tag illustrator">Illustrator</span>
+                <span class="skill-tag writing">Technical Writing</span>
+                <span class="skill-tag api">API Documentation</span>
+                <span class="skill-tag git">Version Control</span>
             </div>
+            <p class="about-subtitle">
+                Graduated from Guangdong University of Foreign Studies with a major in Japanese and a focus on Japanese + Law.<br><br>
+                Work Experience:<br>
+                1. At a supply chain company, built an overseas e-commerce website from scratch, gaining complete front-end engineering experience.<br>
+                2. At a manufacturing enterprise, served as a technical documentation engineer, translating workflows and product information into deliverable documents.<br><br>
+                I use front-end code and technical documentation to turn ideas into deliverable, maintainable products — and find joy in creating.
+            </p>
         </div>
     </section>
 
@@ -953,11 +955,11 @@
 
                 <div class="project-card">
                     <div class="project-image">
-                        <i class="fas fa-palette"></i>
+                        <img src="res/documenpage.jpg" alt="Technical Documentation Writing">
                     </div>
                     <div class="project-info">
-                        <h3>Brand Visual Design</h3>
-                        <p>Created a complete brand visual system for a startup, including Logo, VI design, and brand manual.</p>
+                        <h3>Technical Documentation Writing</h3>
+                        <p>Built a complete technical documentation system for an enterprise, including user manuals, API documentation, and a document publishing workflow.</p>
                         <a href="project-brand.html" class="btn-outline">Learn More</a>
                     </div>
                 </div>
